@@ -13,8 +13,10 @@ public class PlayScreen extends PApplet{
         background(55);
     }
     public void draw() {
+        drawBradCircle();
 
-        //Brad
+    }
+    private void drawBradCircle(){
         fill(0,0,255);
         ellipse(height / 2, width / 2, 100, 100);
     }
