@@ -4,10 +4,10 @@ import processing.core.PApplet;
 
 public class Main {
 
-    private final static String[] OPTIONS = new String[]{"--present", "PlayScreen"};
+    private final static String[] OPTIONS = new String[]{"--present", "com.beta.PlayScreen"};
 
     public static void main(String[] args) {
-      //  PApplet.main(OPTIONS);
+        PApplet.main(OPTIONS);
 	// write your code here
     }
 }

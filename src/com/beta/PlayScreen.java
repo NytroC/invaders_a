@@ -4,15 +4,19 @@ import processing.core.PApplet;
 
 public class PlayScreen extends PApplet{
 
-    public void setings() {
+    public void settings() {
+        fullScreen();
 
     }
 
     public void setup() {
-        size(500,500);
+        background(55);
     }
     public void draw() {
 
+        //Brad
+        fill(0,0,255);
+        ellipse(height / 2, width / 2, 100, 100);
     }
 
 }
