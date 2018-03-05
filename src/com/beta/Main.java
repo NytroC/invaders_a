@@ -8,6 +8,5 @@ public class Main {
 
     public static void main(String[] args) {
         PApplet.main(OPTIONS);
-	// write your code here
     }
 }
