@@ -16,6 +16,7 @@ public class PlayScreen extends PApplet{
         drawBradCircle();
         drawKrishanCircle();
         drawDrewCircle();
+        drawCurtisCircle();
     }
 
     private void drawBradCircle() {
@@ -32,5 +33,8 @@ public class PlayScreen extends PApplet{
         fill(111, 422, 673);
         ellipse(100, 100, 100, 100);
     }
-
+    private void drawCurtisCircle() {
+        fill(100,134,25);
+        ellipse(height / 4, width / 4, 25, 25);
+    }
 }
