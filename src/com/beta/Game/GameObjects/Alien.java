@@ -9,6 +9,8 @@ public class Alien implements GameObjectInterface {
     private Point point;
     private PlayScreen game;
     private PImage sprite;
+    public int width = 30;
+    public int height = 20;
 
     public Alien(PlayScreen game, float x, float y) {
         this.game = game;
@@ -18,11 +20,17 @@ public class Alien implements GameObjectInterface {
     }
 
     public void draw() {
-        this.game.image(this.game.alienSprite, this.point.x, this.point.y, 30, 20);
+        this.game.fill(111, 111, 111);
+        this.game.rect(this.point.x, this.point.y, this.width, this.height);
+//        this.game.image(this.game.alienSprite, this.point.x, this.point.y, 30, 20);
     }
 
     public Point getPosition() {
         return this.point;
+    }
+
+    public float rightEdge() {
+        return this.point.x + this.width;
     }
 
 }
