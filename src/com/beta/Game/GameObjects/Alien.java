@@ -3,7 +3,6 @@ package com.beta.Game.GameObjects;
 import com.beta.Game.Contracts.GameObject.GameObjectInterface;
 import com.beta.Game.Screens.PlayScreen;
 import processing.core.PImage;
-import java.io.File;
 
 public class Alien implements GameObjectInterface {
     private Point point;
@@ -15,8 +14,6 @@ public class Alien implements GameObjectInterface {
     public Alien(PlayScreen game, float x, float y) {
         this.game = game;
         this.point = new Point(x, y);
-
-        this.draw();
     }
 
     public void draw() {
@@ -29,8 +26,16 @@ public class Alien implements GameObjectInterface {
         return this.point;
     }
 
+    public void setPosition(float x, float y) {
+        this.point.x = x;
+        this.point.y = y;
+    }
+
     public float rightEdge() {
         return this.point.x + this.width;
     }
 
+    public float leftEdge() {
+        return this.point.x;
+    }
 }
