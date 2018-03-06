@@ -1,4 +1,4 @@
-package com.beta.GameObjects;
+package com.beta.Game.GameObjects;
 
 public class Point {
     public float x;

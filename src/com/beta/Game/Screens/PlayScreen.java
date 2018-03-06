@@ -1,7 +1,7 @@
-package com.beta.Screens;
+package com.beta.Game.Screens;
 
-import com.beta.GameObjects.AlienFleet;
-import com.beta.GameObjects.Ship;
+import com.beta.Game.GameObjects.AlienFleet;
+import com.beta.Game.GameObjects.Ship;
 import processing.core.PApplet;
 
 public class PlayScreen extends PApplet {
@@ -10,18 +10,20 @@ public class PlayScreen extends PApplet {
     protected Ship ship;
 
     public void settings() {
-        fullScreen();
+        size(800, 600);
     }
 
     public void setup() {
-        background(55);
+        background(255);
+        clear();
+        frameRate(60);
 
         alienFleet = new AlienFleet(this);
-        ship = new Ship(this);        
+        ship = new Ship(this);
     }
 
     public void draw() {
         alienFleet.draw();
-        ship.draw();
+//        ship.draw();
     }
 }
