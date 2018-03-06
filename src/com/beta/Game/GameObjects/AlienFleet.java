@@ -1,19 +1,21 @@
 package com.beta.Game.GameObjects;
 
-import com.beta.Game.Contracts.GameObject.GameObjectInterface;
 import com.beta.Game.Screens.PlayScreen;
 
-public class AlienFleet implements GameObjectInterface {
-    private PlayScreen game;
+public class AlienFleet extends GameObject {
     private Alien[][] alienMatrix = new Alien[10][6];
-    private Point point;
     private String[] rowColors = { "red", "green", "blue", "purple", "orange", "pink" };
     private String xDirection = "LEFT";
     private float xSpeed = 0.5f;
+    private boolean isDroppingBomb = false;
 
-    public AlienFleet(PlayScreen game) {
-        this.game = game;
-        this.point = new Point(50, 50);
+    public AlienFleet(PlayScreen game, Point point) {
+        super(game, point);
+
+        this.setup();
+    }
+
+    void setup() {
         this.buildAlienMatrix();
     }
 
@@ -25,6 +27,7 @@ public class AlienFleet implements GameObjectInterface {
         this.game.clear();
         this.drawAlienMatrix();
         this.updateFleetPosition();
+        this.dropBombFromAlien();
     }
 
     /**
@@ -49,6 +52,15 @@ public class AlienFleet implements GameObjectInterface {
                     this.alienMatrix[col][row].draw();
                 }
             }
+        }
+    }
+
+    public void dropBombFromAlien() {
+        if (this.isDroppingBomb) {
+//            this.
+        } else {
+            this.isDroppingBomb = true;
+            this.alienMatrix[0][5].dropBomb();
         }
     }
 
@@ -140,7 +152,7 @@ public class AlienFleet implements GameObjectInterface {
     /**
      * Reverse the direction of the matrix and bump down closer
      *
-     * @param string direction
+     * @param direction
      */
     private void reverseFleetDirection(String direction) {
         this.xDirection = direction;

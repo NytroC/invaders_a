@@ -12,12 +12,12 @@ public class Ship implements GameObjectInterface {
         this.game = game;
 //        this.shipImage = this.game.loadImage("ship.png");
         this.point = new Point(100, 200);
-        this.point.x = 100;
-        this.point.y = 200;
     }
 
     public void draw() {
-        game.image(shipImage, this.point.x, this.point.y);
+//        this.game.image(shipImage, this.point.x, this.point.y);
+        this.game.fill(255, 000, 000);
+        this.game.rect(this.point.x, this.point.y, 100, 100);
         this.update();
     }
 
