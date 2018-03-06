@@ -24,7 +24,7 @@ public class AlienFleet implements GameObjectInterface {
     public void draw() {
         this.game.clear();
         this.drawAlienMatrix();
-        this.updatePosition();
+        this.updateFleetPosition();
     }
 
     /**
@@ -83,30 +83,20 @@ public class AlienFleet implements GameObjectInterface {
      * Move from left to right until our last non-empty column
      * collides with the edge. Then reverse.
      */
-    private void updatePosition() {
+    private void updateFleetPosition() {
         if (this.xDirection.equals("LEFT")) {
             if (this.getRightMostColumnPosition() <= this.game.width) {
                 this.point.x += this.xSpeed;
             } else {
-                this.reverseDirection("RIGHT");
+                this.reverseFleetDirection("RIGHT");
             }
         } else {
             if (this.getLeftMostColumnPosition() > 0) {
                 this.point.x -= this.xSpeed;
             } else {
-                this.reverseDirection("LEFT");
+                this.reverseFleetDirection("LEFT");
             }
         }
-    }
-
-    /**
-     * Reverse the direction of the matrix and bump down closer
-     *
-     * @param string direction
-     */
-    private void reverseDirection(String direction) {
-        this.xDirection = direction;
-        this.point.y += 5;
     }
 
     /**
@@ -146,4 +136,17 @@ public class AlienFleet implements GameObjectInterface {
 
         return topRightAlien.rightEdge();
     }
+
+    /**
+     * Reverse the direction of the matrix and bump down closer
+     *
+     * @param string direction
+     */
+    private void reverseFleetDirection(String direction) {
+        this.xDirection = direction;
+        this.point.y += 5;
+        this.xSpeed += 0.1f;
+    }
+
+
 }
