@@ -10,7 +10,7 @@ public class Ship implements GameObjectInterface {
 
     public Ship(PApplet game) {
         this.game = game;
-//        this.shipImage = p.loadImage("ship.png");
+//        this.shipImage = this.game.loadImage("ship.png");
         this.point = new Point(100, 200);
         this.point.x = 100;
         this.point.y = 200;
