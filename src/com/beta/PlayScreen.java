@@ -1,22 +1,23 @@
 package com.beta;
 
 import processing.core.PApplet;
+import com.beta.GameObjects.Ship;
 
 public class PlayScreen extends PApplet {
+    protected Ship ship;
 
     public void settings() {
         fullScreen();
     }
 
     public void setup() {
+        ship = new Ship(this);
         background(55);
     }
 
     public void draw() {
-        drawBradCircle();
-        drawKrishanCircle();
-        drawDrewCircle();
-        drawCurtisCircle();
+        background(55);
+        ship.draw();
     }
 
     private void drawBradCircle() {
