@@ -1,26 +1,25 @@
 package com.beta.Game.GameObjects;
 
-import com.beta.Game.Contracts.GameObject.GameObjectInterface;
 import com.beta.Game.Screens.PlayScreen;
-import processing.core.PImage;
 
-public class Alien implements GameObjectInterface {
-    private Point point;
-    private PlayScreen game;
-    private PImage sprite;
+public class Alien extends GameObject {
     public int width = 30;
     public int height = 20;
     private Bomb currentBomb;
 
-    public Alien(PlayScreen game, float x, float y) { // reference to grid
-        this.game = game;
-        this.point = new Point(x, y);
+    public Alien(PlayScreen game, Point point) { // reference to grid
+        super(game, point);
+
+        this.setup();
+    }
+
+    void setup() {
+//        this.game.image(this.game.alienSprite, this.point.x, this.point.y, 30, 20);
     }
 
     public void draw() {
         this.game.fill(000, 255, 000);
         this.game.rect(this.point.x, this.point.y, this.width, this.height);
-//        this.game.image(this.game.alienSprite, this.point.x, this.point.y, 30, 20);
     }
 
     public Point getPosition() {
@@ -32,10 +31,20 @@ public class Alien implements GameObjectInterface {
         this.point.y = y;
     }
 
+    /**
+     * Get the right edge coordinate of the alien
+     *
+     * @return float
+     */
     public float rightEdge() {
         return this.point.x + this.width;
     }
 
+    /**
+     * Get the left edge coordinate of the alien
+     *
+     * @return float
+     */
     public float leftEdge() {
         return this.point.x;
     }

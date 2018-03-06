@@ -36,7 +36,7 @@ public class AlienFleet extends GameObject {
     private void buildAlienMatrix() {
         for (int col = 0; col <= this.alienMatrix.length - 1; col++) {
             for (int row = 0; row <= this.alienMatrix[col].length - 1; row++) {
-                this.alienMatrix[col][row] = new Alien(this.game, this.getAlienX(col), this.getAlienY(row));
+                this.alienMatrix[col][row] = new Alien(this.game, new Point(this.getAlienX(col), this.getAlienY(row)));
             }
         }
     }
@@ -56,12 +56,12 @@ public class AlienFleet extends GameObject {
     }
 
     public void dropBombFromAlien() {
-        if (this.isDroppingBomb) {
-//            this.
-        } else {
+//        if (this.isDroppingBomb) {
+////            this.
+//        } else {
             this.isDroppingBomb = true;
             this.alienMatrix[0][5].dropBomb();
-        }
+//        }
     }
 
     /**
@@ -113,7 +113,8 @@ public class AlienFleet extends GameObject {
 
     /**
      * This will find the rightmost active row with at least the top alien remaining.
-     * Only update this when a collision has been made
+     *
+     * ******* Only update this when a collision has been made *******
      *
      * @return Point
      */

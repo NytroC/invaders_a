@@ -19,4 +19,11 @@ public class Bomb extends GameObject {
         this.game.rect(this.point.x, this.point.y, 5, 15);
         this.point.y += this.speed;
     }
+
+    private void checkForCollision() {
+        // check against fortress
+        // check against ship
+        // check against active rocket
+        // check against lower boundary
+    }
 }

@@ -1,23 +1,23 @@
 package com.beta.Game.GameObjects;
-import com.beta.Game.Contracts.GameObject.GameObjectInterface;
-import processing.core.PApplet;
-import processing.core.PImage;
 
-public class Ship implements GameObjectInterface {
-    private Point point;    
-    PImage shipImage;
-    PApplet game;
+import com.beta.Game.Screens.PlayScreen;
 
-    public Ship(PApplet game) {
-        this.game = game;
-//        this.shipImage = this.game.loadImage("ship.png");
-        this.point = new Point(100, 200);
+public class Ship extends GameObject {
+
+    public Ship(PlayScreen game, Point point) {
+        super(game, point);
+
+        this.setup();
+    }
+
+    void setup() {
+        //        this.shipImage = this.game.loadImage("ship.png");
     }
 
     public void draw() {
 //        this.game.image(shipImage, this.point.x, this.point.y);
         this.game.fill(255, 000, 000);
-        this.game.rect(this.point.x, this.point.y, 100, 100);
+        this.game.rect(this.point.x, this.point.y, 50, 50);
         this.update();
     }
 
@@ -30,7 +30,7 @@ public class Ship implements GameObjectInterface {
             if (game.key == 'a') {
                 this.point.x -= 2;
             } else if (game.key == 'd') {
-                this.point.y += 2;
+                this.point.x += 2;
             }
         }
     }
