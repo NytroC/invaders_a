@@ -19,10 +19,6 @@ public class AlienFleet extends GameObject {
         this.buildAlienMatrix();
     }
 
-    public Point getPosition() {
-        return this.point;
-    }
-
     public void draw() {
         this.game.clear();
         this.drawAlienMatrix();
@@ -36,7 +32,11 @@ public class AlienFleet extends GameObject {
     private void buildAlienMatrix() {
         for (int col = 0; col <= this.alienMatrix.length - 1; col++) {
             for (int row = 0; row <= this.alienMatrix[col].length - 1; row++) {
-                this.alienMatrix[col][row] = new Alien(this.game, new Point(this.getAlienX(col), this.getAlienY(row)));
+                this.alienMatrix[col][row] = new Alien(
+                        this.game,
+                        new Point(this.getAlienX(col), this.getAlienY(row)),
+                        new Point(col, row)
+                );
             }
         }
     }

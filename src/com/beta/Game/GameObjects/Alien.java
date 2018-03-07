@@ -6,10 +6,12 @@ public class Alien extends GameObject {
     public int width = 30;
     public int height = 20;
     private Bomb currentBomb;
+    private Point gridCoordinates;
 
-    public Alien(PlayScreen game, Point point) { // reference to grid
+    public Alien(PlayScreen game, Point point, Point gridCoordinates) { // reference to grid
         super(game, point);
 
+        this.gridCoordinates = gridCoordinates;
         this.setup();
     }
 
@@ -20,15 +22,6 @@ public class Alien extends GameObject {
     public void draw() {
         this.game.fill(000, 255, 000);
         this.game.rect(this.point.x, this.point.y, this.width, this.height);
-    }
-
-    public Point getPosition() {
-        return this.point;
-    }
-
-    public void setPosition(float x, float y) {
-        this.point.x = x;
-        this.point.y = y;
     }
 
     /**

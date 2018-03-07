@@ -23,4 +23,9 @@ abstract public class GameObject {
     public Point getPosition() {
         return this.point;
     }
+
+    public void setPosition(float x, float y) {
+        this.point.x = x;
+        this.point.y = y;
+    }
 }
