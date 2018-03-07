@@ -35,7 +35,8 @@ public class AlienFleet extends GameObject {
                 this.alienMatrix[col][row] = new Alien(
                         this.game,
                         new Point(this.getAlienX(col), this.getAlienY(row)),
-                        new Point(col, row)
+                        new Point(col, row),
+                        this.game.loadImage("sprites/alien/alien-" + this.rowColors[row] + ".png")
                 );
             }
         }

@@ -14,8 +14,8 @@ public class PlayScreen extends PApplet implements GameScreenInterface {
     protected Ship ship;
     protected UFO ufo;
     protected Fortress fortress;
-    boolean keys[] = {false, false, false};
-
+    boolean keys[] = { false, false, false };
+    
     // this can probably move to a main screenController
     public void settings() {
         size(800, 600);
@@ -39,6 +39,7 @@ public class PlayScreen extends PApplet implements GameScreenInterface {
         fortress.draw();
         controls();
     }
+
     public void keyPressed(){
         if(key == ' '){
             keys[0]= true;
@@ -50,6 +51,7 @@ public class PlayScreen extends PApplet implements GameScreenInterface {
             keys[2] = true;
         }
     }
+
     public void keyReleased(){
         if(key == ' '){
             keys[0] = false;
@@ -61,6 +63,7 @@ public class PlayScreen extends PApplet implements GameScreenInterface {
             keys[2] = false;
         }
     }
+
     public void controls(){
         if(keys[0] == true){
             ship.fireRocket();
