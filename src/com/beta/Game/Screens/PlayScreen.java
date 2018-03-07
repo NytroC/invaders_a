@@ -29,4 +29,15 @@ public class PlayScreen extends PApplet implements GameScreenInterface {
         alienFleet.draw();
         ship.draw();
     }
+    public void keyPressed(){
+        if(key == ' '){
+            ship.fireRocket();
+        }
+        if(key == 'a'){
+            ship.moveLeft();
+        }
+        if(key == 'd'){
+            ship.moveRight();
+        }
+    }
 }
