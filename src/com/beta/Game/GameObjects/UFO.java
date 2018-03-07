@@ -14,8 +14,7 @@ public class UFO extends GameObject {
     }
 
     void setup() {
-
-        this.sprite = this.game.loadImage("UFO.png");
+        this.sprite = this.game.loadImage("sprites/ufo.png");
     }
 
     public void draw() {
@@ -28,7 +27,7 @@ public class UFO extends GameObject {
         return this.point;
     }
 
-    private void moveUFO(){
+    private void moveUFO() {
 
         this.point.x += xSpeed;
     }
