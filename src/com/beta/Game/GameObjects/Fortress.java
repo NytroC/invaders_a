@@ -23,9 +23,6 @@ public class Fortress extends GameObject{
         //this.game.image(sprite, this.point.x, this.point.y);
         this.game.fill(200, 255, 2);
         this.game.rect(this.point.x, this.point.y, this.width, this.height);
-
-
-
     }
 
     private void fortressDecay(int status) {

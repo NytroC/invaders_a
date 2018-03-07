@@ -14,6 +14,9 @@ public class PlayScreen extends PApplet implements GameScreenInterface {
     protected Ship ship;
     protected UFO ufo;
     protected Fortress fortress;
+    protected Fortress fortress1;
+    protected Fortress fortress2;
+    protected Fortress fortress3;
     boolean keys[] = { false, false, false };
     
     // this can probably move to a main screenController
@@ -29,7 +32,10 @@ public class PlayScreen extends PApplet implements GameScreenInterface {
         this.alienFleet = new AlienFleet(this, new Point(50, 50));
         this.ship = new Ship(this, new Point(50, this.height - 50));
         this.ufo = new UFO(this, new Point(-300,50));
-        this.fortress = new Fortress(this, new Point(30, 30));
+        this.fortress = new Fortress(this, new Point(100, 450));
+        this.fortress1 = new Fortress(this, new Point(300, 450));
+        this.fortress2 = new Fortress(this, new Point(500, 450));
+        this.fortress3 = new Fortress(this, new Point(700, 450));
     }
 
     public void draw() {
@@ -37,6 +43,9 @@ public class PlayScreen extends PApplet implements GameScreenInterface {
         ship.draw();
         ufo.draw();
         fortress.draw();
+        fortress1.draw();
+        fortress2.draw();
+        fortress3.draw();
         controls();
     }
 
