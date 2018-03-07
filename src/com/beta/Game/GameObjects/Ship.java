@@ -23,12 +23,7 @@ public class Ship extends GameObject {
         this.game.fill(255, 000, 000);
         this.game.image(sprite, this.point.x, this.game.height - 50, this.radius * 2, this.radius* 2);
         this.update();
-        if (this.rocket != null) {
-            this.rocket.draw();
-            if(this.rocket.point.y <= 0){
-                this.rocket = null;
-            }
-        }
+        drawRocket();
     }
 
     public Point getPosition() {
@@ -56,6 +51,17 @@ public class Ship extends GameObject {
                 float rocketX = (this.point.x + radius - 5);
                 this.rocket = new Rocket(this.game, new Point(rocketX, rocketY ));
             }
+        }
+    }
+    void drawRocket(){
+        if (this.rocket != null) {
+            this.rocket.draw();
+            destroyRocket();
+        }
+    }
+    void destroyRocket(){
+        if(this.rocket.point.y <= 0){
+            this.rocket = null;
         }
     }
 }
