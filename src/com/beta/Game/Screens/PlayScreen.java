@@ -22,11 +22,11 @@ public class PlayScreen extends PApplet implements GameScreenInterface {
         frameRate(60);
 
         this.alienFleet = new AlienFleet(this, new Point(50, 50));
-        this.ship = new Ship(this, new Point(50, this.height - 50));
+//        this.ship = new Ship(this, new Point(50, this.height - 50));
     }
 
     public void draw() {
         alienFleet.draw();
-        ship.draw();
+//        ship.draw();
     }
 }
