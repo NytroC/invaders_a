@@ -12,6 +12,7 @@ public class PlayScreen extends PApplet implements GameScreenInterface {
     protected AlienFleet alienFleet;
     protected Ship ship;
     protected UFO ufo;
+    boolean keys[] = {false, false, false};
 
     // this can probably move to a main screenController
     public void settings() {
@@ -32,16 +33,40 @@ public class PlayScreen extends PApplet implements GameScreenInterface {
         alienFleet.draw();
         ship.draw();
         ufo.draw();
+        controls();
     }
     public void keyPressed(){
         if(key == ' '){
-            ship.fireRocket();
+            keys[0]= true;
         }
         if(key == 'a'){
-            ship.moveLeft();
+            keys[1] = true;
         }
         if(key == 'd'){
+            keys[2] = true;
+        }
+    }
+    public void keyReleased(){
+        if(key == ' '){
+            keys[0] = false;
+        }
+        if(key == 'a'){
+            keys[1] = false;
+        }
+        if(key == 'd'){
+            keys[2] = false;
+        }
+    }
+    public void controls(){
+        if(keys[0] == true){
+            ship.fireRocket();
+        }
+        if(keys[1] == true){
+            ship.moveLeft();
+        }
+        if(keys[2] == true){
             ship.moveRight();
         }
     }
+
 }
