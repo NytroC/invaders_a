@@ -26,5 +26,8 @@ public class Bomb extends GameObject {
         // check against ship
         // check against active rocket
         // check against lower boundary
+        // this.game.collisionDetection.collisionMade(COLLISIONS.BOMB_HIT_FORTESS, this)
+        // this.game.collisionDetection.collisionMade(COLLISIONS.BOMB_HIT_SHIP, this)
+        // this.game.collisionDetection.collisionMade(COLLISIONS.BOMB_HIT_ROCKET, this)
     }
 }
