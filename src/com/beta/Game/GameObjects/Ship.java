@@ -19,8 +19,6 @@ public class Ship extends GameObject {
     }
 
     public void draw() {
-//        this.game.image(shipImage, this.point.x, this.point.y);
-        this.game.fill(255, 000, 000);
         this.game.image(sprite, this.point.x, this.game.height - 50, this.radius * 2, this.radius* 2);
         drawRocket();
     }
@@ -31,10 +29,14 @@ public class Ship extends GameObject {
 
 
     public void moveLeft(){
-        this.point.x -= 2;
+        if(point.x >= 0) {
+            this.point.x -= 2;
+        }
     }
     public void moveRight(){
-        this.point.x += 2;
+        if(point.x <= game.width - radius * 2) {
+            this.point.x += 2;
+        }
     }
     public void fireRocket(){
         if (rocket == null) {
