@@ -1,28 +1,36 @@
 package com.beta.Game.GameObjects;
 
-import processing.core.PApplet;
+import com.beta.Game.Screens.PlayScreen;
+//import processing.core.PImage;
 
-public class Fortress {
+public class Fortress extends GameObject{
 
-    private int x;
-    private int y;
     private int lifeRemaining;
-    private PApplet p;
+    public int width = 40;
+    public int height = 40;
+    //private PImage sprite;
 
-    public Fortress(int x, int y, int lifeRemaining, PApplet p) {
-        this.x = x;
-        this.y = y;
-        this.lifeRemaining = lifeRemaining;
-        this.p = p;
+    public Fortress(PlayScreen game, Point point) {
+        super(game, point);
+        this.setup();
+    }
+
+    void setup() {
+        //this.sprite = this.game.loadImage("fort.png");
+    }
+
+    public void draw() {
+        //this.game.image(sprite, this.point.x, this.point.y);
+        this.game.fill(200, 255, 2);
+        this.game.rect(this.point.x, this.point.y, this.width, this.height);
+
+
+
     }
 
     private void fortressDecay(int status) {
         lifeRemaining -= status;
     }
 
-    public void draw() {
-        p.fill(125, 0, 0);
-        p.ellipse(x, y, 2, 3);
-    }
 }
 

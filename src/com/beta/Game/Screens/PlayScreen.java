@@ -5,6 +5,7 @@ import com.beta.Game.GameObjects.AlienFleet;
 import com.beta.Game.GameObjects.Point;
 import com.beta.Game.GameObjects.Ship;
 import com.beta.Game.GameObjects.UFO;
+import com.beta.Game.GameObjects.Fortress;
 import processing.core.PApplet;
 
 public class PlayScreen extends PApplet implements GameScreenInterface {
@@ -12,6 +13,7 @@ public class PlayScreen extends PApplet implements GameScreenInterface {
     protected AlienFleet alienFleet;
     protected Ship ship;
     protected UFO ufo;
+    protected Fortress fortress;
     boolean keys[] = {false, false, false};
 
     // this can probably move to a main screenController
@@ -26,13 +28,15 @@ public class PlayScreen extends PApplet implements GameScreenInterface {
 
         this.alienFleet = new AlienFleet(this, new Point(50, 50));
         this.ship = new Ship(this, new Point(50, this.height - 50));
-        this.ufo = new UFO(this, new Point(-300,25));
+        this.ufo = new UFO(this, new Point(-300,50));
+        this.fortress = new Fortress(this, new Point(30, 30));
     }
 
     public void draw() {
         alienFleet.draw();
         ship.draw();
         ufo.draw();
+        fortress.draw();
         controls();
     }
     public void keyPressed(){
