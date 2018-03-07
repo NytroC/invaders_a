@@ -3,6 +3,7 @@ package com.beta.Game.GameObjects;
 import com.beta.Game.Screens.PlayScreen;
 
 public class Rocket extends  GameObject {
+
     public Rocket(PlayScreen game, Point point) {
         super(game, point);
 

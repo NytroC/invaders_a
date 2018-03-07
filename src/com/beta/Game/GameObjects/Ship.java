@@ -1,11 +1,12 @@
 package com.beta.Game.GameObjects;
 
 import com.beta.Game.Screens.PlayScreen;
-import com.beta.Game.GameObjects.Rocket;
+import processing.core.PImage;
 
 public class Ship extends GameObject {
-
+    private PImage sprite;
     private Rocket rocket;
+    private float radius = 25;
 
     public Ship(PlayScreen game, Point point) {
         super(game, point);
@@ -14,13 +15,13 @@ public class Ship extends GameObject {
     }
 
     void setup() {
-        //        this.shipImage = this.game.loadImage("ship.png");
+                this.sprite = this.game.loadImage("ship.png");
     }
 
     public void draw() {
 //        this.game.image(shipImage, this.point.x, this.point.y);
         this.game.fill(255, 000, 000);
-        this.game.rect(this.point.x, this.point.y, 50, 50);
+        this.game.image(sprite, this.point.x, this.game.height - 50, this.radius * 2, this.radius* 2);
         this.update();
         if (this.rocket != null) {
             this.rocket.draw();
@@ -35,6 +36,11 @@ public class Ship extends GameObject {
     }
 
     void update() {
+        this.move();
+        this.fire();
+    }
+
+    void move(){
         if (game.keyPressed) {
             if (game.key == 'a') {
                 this.point.x -= 2;
@@ -42,10 +48,12 @@ public class Ship extends GameObject {
                 this.point.x += 2;
             }
         }
-        if (game.keyPressed) {
+    }
+    void fire(){
+        if (game.keyPressed && this.rocket == null) {
             if (game.key == ' ') {
                 float rocketY = this.point.y;
-                float rocketX = this.point.x;
+                float rocketX = (this.point.x + radius - 5);
                 this.rocket = new Rocket(this.game, new Point(rocketX, rocketY ));
             }
         }
