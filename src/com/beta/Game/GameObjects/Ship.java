@@ -15,7 +15,7 @@ public class Ship extends GameObject {
     }
 
     void setup() {
-                this.sprite = this.game.loadImage("ship.png");
+        this.sprite = this.game.loadImage("sprites/ship.png");
     }
 
     public void draw() {
