@@ -1,6 +1,7 @@
 package com.beta.Game.GameObjects;
 
-import com.beta.Game.Screens.PlayScreen;
+import com.beta.Game.Screens.Game;
+
 
 public class AlienFleet extends GameObject {
     private Alien[][] alienMatrix = new Alien[10][6];
@@ -9,7 +10,7 @@ public class AlienFleet extends GameObject {
     private float xSpeed = 0.5f;
     private boolean isDroppingBomb = false;
 
-    public AlienFleet(PlayScreen game, Point point) {
+    public AlienFleet(Game game, Point point) {
         super(game, point);
 
         this.setup();

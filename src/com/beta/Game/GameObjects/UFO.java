@@ -1,5 +1,6 @@
 package com.beta.Game.GameObjects;
 
+import com.beta.Game.Screens.Game;
 import com.beta.Game.Screens.PlayScreen;
 import processing.core.PImage;
 
@@ -7,7 +8,7 @@ public class UFO extends GameObject {
     private PImage sprite;
     private float xSpeed = 1.0f;
 
-    public UFO(PlayScreen game, Point point) {
+    public UFO(Game game, Point point) {
 
         super(game, point);
         this.setup();

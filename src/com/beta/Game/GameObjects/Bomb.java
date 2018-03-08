@@ -1,11 +1,12 @@
 package com.beta.Game.GameObjects;
 
+import com.beta.Game.Screens.Game;
 import com.beta.Game.Screens.PlayScreen;
 
 public class Bomb extends GameObject {
     private float speed = 2f;
 
-    public Bomb(PlayScreen game, Point point) {
+    public Bomb(Game game, Point point) {
         super(game, point);
 
         this.setup();

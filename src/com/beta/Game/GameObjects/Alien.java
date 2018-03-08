@@ -1,5 +1,6 @@
 package com.beta.Game.GameObjects;
 
+import com.beta.Game.Screens.Game;
 import com.beta.Game.Screens.PlayScreen;
 import processing.core.PImage;
 
@@ -9,7 +10,8 @@ public class Alien extends GameObject {
     private Bomb currentBomb;
     private Point gridCoordinates;
 
-    public Alien(PlayScreen game, Point point, Point gridCoordinates, PImage sprite) { // reference to grid
+
+    public Alien(Game game, Point point, Point gridCoordinates, PImage sprite) { // reference to grid
         super(game, point);
 
         this.sprite = sprite;
@@ -22,7 +24,7 @@ public class Alien extends GameObject {
     }
 
     public void draw() {
-        this.game.fill(000, 255, 000);
+        game.fill(000, 255, 000);
         this.game.image(this.sprite, this.point.x, this.point.y, this.width, this.height);
     }
 

@@ -1,5 +1,6 @@
 package com.beta.Game.GameObjects;
 
+import com.beta.Game.Screens.Game;
 import com.beta.Game.Screens.PlayScreen;
 import processing.core.PImage;
 
@@ -8,10 +9,10 @@ import processing.core.PImage;
  */
 abstract public class GameObject {
     protected Point point;
-    protected PlayScreen game;
+    protected Game game;
     protected PImage sprite;
 
-    public GameObject(PlayScreen game, Point point) {
+    public GameObject(Game game, Point point) {
         this.game = game;
         this.point = point;
     }

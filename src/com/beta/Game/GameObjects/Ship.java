@@ -1,6 +1,6 @@
 package com.beta.Game.GameObjects;
 
-import com.beta.Game.Screens.PlayScreen;
+import com.beta.Game.Screens.Game;
 import processing.core.PImage;
 
 public class Ship extends GameObject {
@@ -8,7 +8,7 @@ public class Ship extends GameObject {
     private Rocket rocket;
     private float radius = 25;
 
-    public Ship(PlayScreen game, Point point) {
+    public Ship(Game game, Point point) {
         super(game, point);
 
         this.setup();

@@ -1,5 +1,6 @@
 package com.beta.Game.GameObjects;
 
+import com.beta.Game.Screens.Game;
 import com.beta.Game.Screens.PlayScreen;
 //import processing.core.PImage;
 
@@ -10,7 +11,7 @@ public class Fortress extends GameObject{
     public int height = 40;
     //private PImage sprite;
 
-    public Fortress(PlayScreen game, Point point) {
+    public Fortress(Game game, Point point) {
         super(game, point);
         this.setup();
     }
