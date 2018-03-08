@@ -11,7 +11,7 @@ public class Alien extends GameObject {
     public boolean isAlive = true;
 
 
-    public Alien(Game game, Point point, Point gridCoordinates, PImage sprite) { // reference to grid
+    public Alien(Game game, Point point, Point gridCoordinates, PImage sprite) {
         super(game, point);
 
         this.sprite = sprite;
@@ -24,8 +24,9 @@ public class Alien extends GameObject {
     }
 
     public void draw() {
-        game.fill(000, 255, 000);
-        this.game.image(this.sprite, this.point.x, this.point.y, this.width, this.height);
+        if (this.isAlive) {
+            this.game.image(this.sprite, this.point.x, this.point.y, this.width, this.height);
+        }
     }
 
     /**
@@ -48,5 +49,7 @@ public class Alien extends GameObject {
 
     public void kill() {
         this.isAlive = false;
+        System.out.println("Killing " + this.gridCoordinates.x + ", " + this.gridCoordinates.y);
+        System.out.println(this.isAlive);
     }
 }

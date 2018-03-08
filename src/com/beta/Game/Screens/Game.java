@@ -65,5 +65,9 @@ public class Game extends PApplet {
     public void keyReleased() {
         playScreen.keyReleased();
     }
+
+    public void mouseClicked() {
+        playScreen.mouseClicked();
+    }
 }
 

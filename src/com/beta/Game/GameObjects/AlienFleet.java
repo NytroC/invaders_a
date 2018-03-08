@@ -1,7 +1,7 @@
 package com.beta.Game.GameObjects;
 
 import com.beta.Game.Screens.Game;
-
+import java.util.concurrent.ThreadLocalRandom;
 
 public class AlienFleet extends GameObject {
     private Alien[][] alienMatrix = new Alien[10][6];
@@ -10,6 +10,14 @@ public class AlienFleet extends GameObject {
     private float xSpeed = 0.5f;
     private boolean isDroppingBomb = false;
     private Bomb currentBomb;
+
+//    [
+//            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+//            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+//            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+//            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+//    ]
 
     public AlienFleet(Game game, Point point) {
         super(game, point);
@@ -24,19 +32,19 @@ public class AlienFleet extends GameObject {
     public void draw() {
         this.drawAlienMatrix();
         this.updateFleetPosition();
-        this.dropBombFromAlien();
+//        this.dropBombFromAlien();
     }
 
     /**
      * Build the initial alien matrix
      */
     private void buildAlienMatrix() {
-        for (int col = 0; col <= this.alienMatrix.length - 1; col++) {
-            for (int row = 0; row <= this.alienMatrix[col].length - 1; row++) {
-                this.alienMatrix[col][row] = new Alien(
+        for (int column = 0; column <= this.alienMatrix.length - 1; column++) {
+            for (int row = 0; row <= this.alienMatrix[column].length - 1; row++) {
+                this.alienMatrix[column][row] = new Alien(
                         this.game,
-                        new Point(this.getAlienX(col), this.getAlienY(row)),
-                        new Point(col, row),
+                        new Point(this.getAlienX(column), this.getAlienY(row)),
+                        new Point(column, row),
                         this.game.loadImage("sprites/alien/alien-" + this.rowColors[row] + ".png")
                 );
             }
@@ -47,11 +55,11 @@ public class AlienFleet extends GameObject {
      * Update the alien position and redraw them
      */
     private void drawAlienMatrix() {
-        for (int col = 0; col <= this.alienMatrix.length - 1; col++) {
-            for (int row = 0; row <= this.alienMatrix[col].length - 1; row++) {
-                if (this.alienMatrix[col][row] != null) {
-                    this.alienMatrix[col][row].setPosition(this.getAlienX(col), this.getAlienY(row));
-                    this.alienMatrix[col][row].draw();
+        for (int column = 0; column <= this.alienMatrix.length - 1; column++) {
+            for (int row = 0; row <= this.alienMatrix[column].length - 1; row++) {
+                if (this.alienMatrix[column][row] != null) {
+                    this.alienMatrix[column][row].setPosition(this.getAlienX(column), this.getAlienY(row));
+                    this.alienMatrix[column][row].draw();
                 }
             }
         }
@@ -61,17 +69,18 @@ public class AlienFleet extends GameObject {
         if (this.isDroppingBomb) {
             this.currentBomb.draw();
 
-            if (this.currentBomb.bottomEdge() > (this.game.height + this.currentBomb.height + 250)) {
+            if (this.currentBomb.bottomEdge() > (this.game.height + this.currentBomb.height + 150)) {
                 this.stopDroppingBomb();
             }
 
         } else {
-            this.isDroppingBomb = true;
+            Alien alien = this.getAlienToDropBombFrom();
 
-            float bombX = this.alienMatrix[0][5].point.x + (this.alienMatrix[0][5].width / 2);
-            float bombY = this.alienMatrix[0][5].point.y + this.alienMatrix[0][5].height;
+            float bombX = alien.point.x + (alien.width / 2);
+            float bombY = alien.point.y + alien.height;
 
             this.currentBomb = new Bomb(this.game, new Point(bombX, bombY));
+            this.isDroppingBomb = true;
         }
 
         // get last next column that has active aliens
@@ -89,11 +98,11 @@ public class AlienFleet extends GameObject {
      * @param {int} col
      * @return float
      */
-    private float getAlienX(int col) {
+    private float getAlienX(int column) {
         int columnWidth = 30;
         int columnSizeWithSpacing = columnWidth + 20;
 
-        return (col * columnSizeWithSpacing) + this.point.x;
+        return (column * columnSizeWithSpacing) + this.point.x;
     }
 
     /**
@@ -116,13 +125,13 @@ public class AlienFleet extends GameObject {
      */
     private void updateFleetPosition() {
         if (this.xDirection.equals("LEFT")) {
-            if (this.getRightMostColumnPosition() <= this.game.width) {
+            if (this.getRightColumnEdge() <= this.game.width) {
                 this.point.x += this.xSpeed;
             } else {
                 this.reverseFleetDirection("RIGHT");
             }
         } else {
-            if (this.getLeftMostColumnPosition() > 0) {
+            if (this.getLeftColumnEdge() > 0) {
                 this.point.x -= this.xSpeed;
             } else {
                 this.reverseFleetDirection("LEFT");
@@ -137,17 +146,20 @@ public class AlienFleet extends GameObject {
      *
      * @return Point
      */
-    private float getLeftMostColumnPosition() {
+    private int getLeftMostColumn() {
         Alien topLeftAlien = this.alienMatrix[0][0];
 
         int column = 0;
 
         while(!topLeftAlien.isAlive && column < this.alienMatrix.length) {
-            topLeftAlien = this.alienMatrix[column][0];
             column++;
         }
 
-        return topLeftAlien.leftEdge();
+        return column;
+    }
+
+    private float getLeftColumnEdge() {
+        return this.alienMatrix[this.getLeftMostColumn()][0].leftEdge();
     }
 
     /**
@@ -156,17 +168,33 @@ public class AlienFleet extends GameObject {
      *
      * @return Point
      */
-    private float getRightMostColumnPosition() {
-        Alien topRightAlien = this.alienMatrix[this.alienMatrix.length - 1][0];
-
+    private int getRightMostColumn() {
         int column = this.alienMatrix.length - 1;
 
+        Alien topRightAlien = this.alienMatrix[column][0];
+
         while(!topRightAlien.isAlive && column > 0) {
-            topRightAlien = this.alienMatrix[column][0];
             column--;
         }
 
-        return topRightAlien.rightEdge();
+        return column;
+    }
+
+    private float getRightColumnEdge() {
+        return this.alienMatrix[this.getRightMostColumn()][0].rightEdge();
+    }
+
+    private int getLastRowInColumn(int column) {
+        int row = this.alienMatrix[column].length - 1;
+
+        Alien bottomAlien = this.alienMatrix[column][row];
+
+        while(!bottomAlien.isAlive && row > 0) {
+            bottomAlien = this.alienMatrix[column][row];
+            row--;
+        }
+
+        return row;
     }
 
     /**
@@ -178,6 +206,20 @@ public class AlienFleet extends GameObject {
         this.xDirection = direction;
         this.point.y += 5;
         this.xSpeed += 0.1f;
+    }
+
+    private Alien getAlienToDropBombFrom() {
+        int column = ThreadLocalRandom.current().nextInt(this.getLeftMostColumn(), this.getRightMostColumn());
+
+        return this.alienMatrix[column][this.getLastRowInColumn(column)];
+    }
+
+    public void killRandomAlien() {
+        int lastRow = this.getLastRowInColumn(0);
+
+        System.out.println("Last Row: " + lastRow);
+
+        this.alienMatrix[0][lastRow].kill();
     }
 
 
