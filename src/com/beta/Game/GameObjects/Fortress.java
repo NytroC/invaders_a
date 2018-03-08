@@ -11,7 +11,6 @@ public class Fortress extends GameObject{
     private PImage sprite;
     ArrayList<Fortress> fortress = new ArrayList<>();
 
-
     public Fortress(Game game, Point point) {
         super(game, point);
         this.setup();
