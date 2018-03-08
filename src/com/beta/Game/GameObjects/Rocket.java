@@ -5,9 +5,10 @@ import com.beta.Game.Screens.PlayScreen;
 
 public class Rocket extends  GameObject {
 
+    private float ySpeed = 3.0f;
+
     public Rocket(Game game, Point point) {
         super(game, point);
-
         this.setup();
     }
 
@@ -22,7 +23,7 @@ public class Rocket extends  GameObject {
         this.update();
     }
     public void update(){
-        this.point.y--;
+        this.point.y -= ySpeed;
     }
 
     public Point getPosition() {
