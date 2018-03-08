@@ -14,6 +14,9 @@ public class PlayScreen implements GameScreenInterface {
     protected Ship ship;
     protected UFO ufo;
     protected Fortress fortress;
+    protected Fortress fortress1;
+    protected Fortress fortress2;
+    protected Fortress fortress3;
     protected Game game;
 
 
@@ -23,7 +26,10 @@ public class PlayScreen implements GameScreenInterface {
         alienFleet = new AlienFleet(game, new Point(50, 50));
         ship = new Ship(game, new Point(50, game.height - 50));
         ufo = new UFO(game, new Point(-300,25));
-        fortress = new Fortress(game, new Point(30, 30));
+        fortress = new Fortress(game, new Point(100, 450));
+        fortress1 = new Fortress(game, new Point(300, 450));
+        fortress2 = new Fortress(game, new Point(500, 450));
+        fortress3 = new Fortress(game, new Point(700, 450));
     }
 
     public void draw() {
@@ -31,6 +37,9 @@ public class PlayScreen implements GameScreenInterface {
         ship.draw();
         ufo.draw();
         fortress.draw();
+        fortress1.draw();
+        fortress2.draw();
+        fortress3.draw();
         controls();
     }
 
