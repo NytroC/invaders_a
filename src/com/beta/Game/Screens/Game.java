@@ -8,7 +8,9 @@ public class Game extends PApplet {
 
     protected StartScreen startScreen;
     protected PlayScreen playScreen;
+    protected PauseScreen pauseScreen;
     protected boolean startGame = false;
+    protected boolean pauseGame = false;
 
     boolean keys[] = {false, false, false};
 
@@ -19,6 +21,7 @@ public class Game extends PApplet {
     public void setup() {
         startScreen = new StartScreen(this);
         playScreen = new PlayScreen(this);
+        pauseScreen = new PauseScreen(this);
 
     }
 
@@ -32,6 +35,9 @@ public class Game extends PApplet {
         if (startGame) {
             playScreen.draw();
         }
+        if (pauseGame) {
+            pauseScreen.draw();
+        }
     }
 
     public void keyPressed() {
@@ -39,6 +45,11 @@ public class Game extends PApplet {
 
         if(keyPressed == true){
             startGame = true;
+            pauseGame = false;
+        }
+        if(key == 'p'){
+            startGame = false;
+            pauseGame = true;
         }
 
     }
