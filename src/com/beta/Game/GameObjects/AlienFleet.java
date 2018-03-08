@@ -9,6 +9,7 @@ public class AlienFleet extends GameObject {
     private String xDirection = "LEFT";
     private float xSpeed = 0.5f;
     private boolean isDroppingBomb = false;
+    private Bomb currentBomb;
 
     public AlienFleet(Game game, Point point) {
         super(game, point);
@@ -57,14 +58,31 @@ public class AlienFleet extends GameObject {
     }
 
     public void dropBombFromAlien() {
-//        if (this.isDroppingBomb) {
-////            this.
-//        } else {
+        if (this.isDroppingBomb) {
+            this.currentBomb.draw();
+
+            if (this.currentBomb.bottomEdge() > (this.game.height + this.currentBomb.height + 250)) {
+                this.stopDroppingBomb();
+            }
+
+        } else {
             this.isDroppingBomb = true;
-            this.alienMatrix[0][5].dropBomb();
-//        }
+
+            float bombX = this.alienMatrix[0][5].point.x + (this.alienMatrix[0][5].width / 2);
+            float bombY = this.alienMatrix[0][5].point.y + this.alienMatrix[0][5].height;
+
+            this.currentBomb = new Bomb(this.game, new Point(bombX, bombY));
+        }
+
+        // get last next column that has active aliens
+        // get bottomMost alien
+        // fire from it
     }
 
+    public void stopDroppingBomb() {
+        this.isDroppingBomb = false;
+        this.currentBomb = null;
+    }
     /**
      * Get the alien's new Y position based off the given row
      *
@@ -120,11 +138,11 @@ public class AlienFleet extends GameObject {
      * @return Point
      */
     private float getLeftMostColumnPosition() {
-        Alien topLeftAlien = null;
+        Alien topLeftAlien = this.alienMatrix[0][0];
 
         int column = 0;
 
-        while(topLeftAlien == null && column < this.alienMatrix.length) {
+        while(!topLeftAlien.isAlive && column < this.alienMatrix.length) {
             topLeftAlien = this.alienMatrix[column][0];
             column++;
         }
@@ -139,11 +157,11 @@ public class AlienFleet extends GameObject {
      * @return Point
      */
     private float getRightMostColumnPosition() {
-        Alien topRightAlien = null;
+        Alien topRightAlien = this.alienMatrix[this.alienMatrix.length - 1][0];
 
         int column = this.alienMatrix.length - 1;
 
-        while(topRightAlien == null && column > 0) {
+        while(!topRightAlien.isAlive && column > 0) {
             topRightAlien = this.alienMatrix[column][0];
             column--;
         }

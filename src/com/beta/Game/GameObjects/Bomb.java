@@ -5,6 +5,8 @@ import com.beta.Game.Screens.PlayScreen;
 
 public class Bomb extends GameObject {
     private float speed = 2f;
+    public int width = 5;
+    public int height = 15;
 
     public Bomb(Game game, Point point) {
         super(game, point);
@@ -17,8 +19,12 @@ public class Bomb extends GameObject {
     }
 
     public void draw() {
-        this.game.rect(this.point.x, this.point.y, 5, 15);
+        this.game.rect(this.point.x, this.point.y, this.width, this.height);
         this.point.y += this.speed;
+    }
+
+    public float bottomEdge() {
+        return this.point.y + this.height;
     }
 
     private void checkForCollision() {
@@ -26,7 +32,7 @@ public class Bomb extends GameObject {
         // check against ship
         // check against active rocket
         // check against lower boundary
-        // this.game.collisionDetection.collisionMade(COLLISIONS.BOMB_HIT_FORTESS, this)
+        // this.game.collisionDetection.collisionMade(this.game.COLLISIONS.BOMB_HIT_FORTESS, this)
         // this.game.collisionDetection.collisionMade(COLLISIONS.BOMB_HIT_SHIP, this)
         // this.game.collisionDetection.collisionMade(COLLISIONS.BOMB_HIT_ROCKET, this)
     }

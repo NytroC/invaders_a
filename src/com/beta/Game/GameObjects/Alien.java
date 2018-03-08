@@ -5,10 +5,10 @@ import com.beta.Game.Screens.PlayScreen;
 import processing.core.PImage;
 
 public class Alien extends GameObject {
-    public int width = 30;
-    public int height = 20;
-    private Bomb currentBomb;
+    public int width = 35;
+    public int height = 25;
     private Point gridCoordinates;
+    public boolean isAlive = true;
 
 
     public Alien(Game game, Point point, Point gridCoordinates, PImage sprite) { // reference to grid
@@ -46,14 +46,7 @@ public class Alien extends GameObject {
         return this.point.x;
     }
 
-    public void dropBomb() {
-        float bombX = this.point.x + (this.width / 2);
-        float bombY = this.point.y + this.height;
-
-        if (this.currentBomb != null) {
-            this.currentBomb.draw();
-        } else {
-            this.currentBomb = new Bomb(this.game, new Point(bombX, bombY));
-        }
+    public void kill() {
+        this.isAlive = false;
     }
 }

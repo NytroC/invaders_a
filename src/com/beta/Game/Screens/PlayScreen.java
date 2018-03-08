@@ -7,9 +7,6 @@ import com.beta.Game.GameObjects.Ship;
 import com.beta.Game.GameObjects.UFO;
 import com.beta.Game.GameObjects.Fortress;
 
-
-
-
 public class PlayScreen implements GameScreenInterface {
 
     protected AlienFleet alienFleet;
@@ -21,6 +18,18 @@ public class PlayScreen implements GameScreenInterface {
     protected Fortress fortress3;
     protected Game game;
     protected String scoreText;
+    boolean keys[] = { false, false, false };
+
+    // this can probably move to a main screenController
+    public void settings() {
+        size(800, 600);
+    }
+
+    public void setup() {
+        background(255);
+        clear();
+        frameRate(60);
+    }
 
     public PlayScreen(Game game){
         this.game = game;
