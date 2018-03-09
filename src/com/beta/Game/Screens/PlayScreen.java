@@ -1,6 +1,7 @@
 package com.beta.Game.Screens;
 
-import com.beta.Game.Contracts.GameScreen.GameScreenInterface;
+import com.beta.Game.CollisionDetection.CollisionDetector;
+import com.beta.Game.Contracts.GameScreen.GameScreenable;
 import com.beta.Game.GameObjects.AlienFleet;
 import com.beta.Game.GameObjects.Point;
 import com.beta.Game.GameObjects.Ship;
@@ -8,10 +9,7 @@ import com.beta.Game.GameObjects.UFO;
 import com.beta.Game.GameObjects.Fortress;
 
 
-
-
-public class PlayScreen implements GameScreenInterface {
-
+public class PlayScreen implements GameScreenable {
     protected AlienFleet alienFleet;
     protected Ship ship;
     protected UFO ufo;
@@ -21,6 +19,8 @@ public class PlayScreen implements GameScreenInterface {
     protected Fortress fortress3;
     protected Game game;
     protected String scoreText;
+    protected CollisionDetector collisionDetector;
+    boolean keys[] = { false, false, false };
 
     public PlayScreen(Game game){
         this.game = game;
@@ -37,6 +37,7 @@ public class PlayScreen implements GameScreenInterface {
         fortress1 = new Fortress(game, new Point(280, 450));
         fortress2 = new Fortress(game, new Point(480, 450));
         fortress3 = new Fortress(game, new Point(680, 450));
+        collisionDetector = new CollisionDetector(this);
     }
 
     public void draw() {

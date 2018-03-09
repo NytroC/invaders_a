@@ -1,18 +1,14 @@
 package com.beta.Game.Screens;
 
-import com.beta.Game.Contracts.GameScreen.GameScreenInterface;
 import com.beta.Game.GameState.GameState;
 import processing.core.PApplet;
 
 public class Game extends PApplet {
-
-
     protected StartScreen startScreen;
     protected PlayScreen playScreen;
     protected PauseScreen pauseScreen;
     protected boolean startGame = false;
     protected boolean pauseGame = false;
-
     protected GameState gamestate;
     protected int score;
     protected int highScore;
@@ -64,10 +60,6 @@ public class Game extends PApplet {
 
     public void keyReleased() {
         playScreen.keyReleased();
-    }
-
-    public void mouseClicked() {
-        playScreen.mouseClicked();
     }
 }
 

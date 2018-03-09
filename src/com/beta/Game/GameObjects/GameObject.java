@@ -1,7 +1,6 @@
 package com.beta.Game.GameObjects;
 
 import com.beta.Game.Screens.Game;
-import com.beta.Game.Screens.PlayScreen;
 import processing.core.PImage;
 
 /**

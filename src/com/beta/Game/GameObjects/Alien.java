@@ -1,17 +1,16 @@
 package com.beta.Game.GameObjects;
 
 import com.beta.Game.Screens.Game;
-import com.beta.Game.Screens.PlayScreen;
 import processing.core.PImage;
 
 public class Alien extends GameObject {
     public int width = 35;
     public int height = 25;
-    private Point gridCoordinates;
+    private GridPoint gridCoordinates;
     public boolean isAlive = true;
 
 
-    public Alien(Game game, Point point, Point gridCoordinates, PImage sprite) {
+    public Alien(Game game, Point point, GridPoint gridCoordinates, PImage sprite) {
         super(game, point);
 
         this.sprite = sprite;
@@ -26,6 +25,7 @@ public class Alien extends GameObject {
     public void draw() {
         if (this.isAlive) {
             this.game.image(this.sprite, this.point.x, this.point.y, this.width, this.height);
+            this.detectCollision();
         }
     }
 
@@ -51,5 +51,9 @@ public class Alien extends GameObject {
         this.isAlive = false;
         System.out.println("Killing " + this.gridCoordinates.x + ", " + this.gridCoordinates.y);
         System.out.println(this.isAlive);
+    }
+
+    private void detectCollision() {
+//        System.out.println(this.game.c);
     }
 }

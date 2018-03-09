@@ -1,6 +1,5 @@
 package com.beta.Game.Contracts.GameScreen;
 
-public interface GameScreenInterface {
-
+public interface GameScreenable {
     public void draw();
 }

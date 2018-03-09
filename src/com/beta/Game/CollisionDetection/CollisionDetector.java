@@ -1,16 +1,18 @@
 package com.beta.Game.CollisionDetection;
 
-import processing.core.PApplet;
+import com.beta.Game.Screens.PlayScreen;
 
 /**
  * Created by drewbartlett on 3/7/18.
  */
 public class CollisionDetector {
-    protected PApplet game;
+    protected PlayScreen game;
 
-    public CollisionDetector(PApplet game) {
+    public CollisionDetector(PlayScreen game) {
         this.game = game;
     }
 
+    public void collisionMade(String collisionType) {
 
+    }
 }
