@@ -8,6 +8,8 @@ import com.beta.Game.GameObjects.UFO;
 import com.beta.Game.GameObjects.Fortress;
 
 
+
+
 public class PlayScreen implements GameScreenInterface {
 
     protected AlienFleet alienFleet;
@@ -26,6 +28,11 @@ public class PlayScreen implements GameScreenInterface {
         alienFleet = new AlienFleet(game, new Point(50, 50));
         ship = new Ship(game, new Point(50, game.height - 50));
         ufo = new UFO(game, new Point(-300,25));
+        /*
+        for (int i = 0; i < 4; i++) {
+            fortress = new Fortress(game, new Point(this.width/4 * i + 200, this.height - 200, 100, this));
+        }
+        */
         fortress = new Fortress(game, new Point(100, 450));
         fortress1 = new Fortress(game, new Point(300, 450));
         fortress2 = new Fortress(game, new Point(500, 450));
@@ -36,6 +43,11 @@ public class PlayScreen implements GameScreenInterface {
         alienFleet.draw();
         ship.draw();
         ufo.draw();
+        /*
+        for(int i = 0; i < this.fortress.size(); i++) {
+            this.fortress.get(i).draw();
+        }
+        */
         fortress.draw();
         fortress1.draw();
         fortress2.draw();
