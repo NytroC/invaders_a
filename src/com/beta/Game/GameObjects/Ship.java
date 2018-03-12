@@ -11,9 +11,9 @@ public class Ship extends GameObject {
     ArrayList<Rocket> rockets = new ArrayList<>();
     private float radius = 25;
     private float speed = 2;
-    int counter = 0;
-    boolean reloading = false;
-    int reloadTime = 180;
+    private int counter = 0;
+    private boolean reloading = false;
+    private int reloadTime = 180;
 
 
     public Ship(Game game, Point point) {
@@ -56,10 +56,9 @@ public class Ship extends GameObject {
         }
     }
     void drawRocket(){
-//        if (this.rocket != null) {
-//            this.rocket.draw();
-//            destroyRocket();
-//        }
+        if (this.rocket != null) {
+            this.rocket.draw();
+        }
         for (Rocket rocket:rockets)
         {
             rocket.draw();

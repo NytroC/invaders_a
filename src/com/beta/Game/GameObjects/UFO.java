@@ -9,7 +9,6 @@ public class UFO extends GameObject {
     private float xSpeed = 1.0f;
 
     public UFO(Game game, Point point) {
-
         super(game, point);
         this.setup();
     }
@@ -19,7 +18,6 @@ public class UFO extends GameObject {
     }
 
     public void draw() {
-//        this.game.image(shipImage, this.point.x, this.point.y);
         moveUFO();
         this.game.image(sprite, this.point.x, this.point.y);
     }
@@ -29,10 +27,6 @@ public class UFO extends GameObject {
     }
 
     private void moveUFO() {
-
         this.point.x += xSpeed;
     }
-
-
-
 }
