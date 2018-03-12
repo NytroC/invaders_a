@@ -22,8 +22,6 @@ public class PlayScreen implements GameScreenInterface {
     protected Game game;
     protected String scoreText;
 
-
-
     public PlayScreen(Game game){
         this.game = game;
         scoreText = "Score: ";
