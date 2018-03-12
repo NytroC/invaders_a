@@ -12,6 +12,10 @@ public class Game extends PApplet {
     protected boolean startGame = false;
     protected boolean pauseGame = false;
 
+    protected String title;
+    protected int score;
+    protected int highScore;
+
     boolean keys[] = {false, false, false};
 
     public void settings() {
@@ -22,6 +26,8 @@ public class Game extends PApplet {
         startScreen = new StartScreen(this);
         playScreen = new PlayScreen(this);
         pauseScreen = new PauseScreen(this);
+        title = "Space Invaders";
+        score = 0;
 
     }
 
