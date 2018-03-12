@@ -33,10 +33,10 @@ public class PlayScreen implements GameScreenInterface {
             fortress = new Fortress(game, new Point(this.width/4 * i + 200, this.height - 200, 100, this));
         }
         */
-        fortress = new Fortress(game, new Point(100, 450));
-        fortress1 = new Fortress(game, new Point(300, 450));
-        fortress2 = new Fortress(game, new Point(500, 450));
-        fortress3 = new Fortress(game, new Point(700, 450));
+        fortress = new Fortress(game, new Point(80, 450));
+        fortress1 = new Fortress(game, new Point(280, 450));
+        fortress2 = new Fortress(game, new Point(480, 450));
+        fortress3 = new Fortress(game, new Point(680, 450));
     }
 
     public void draw() {
