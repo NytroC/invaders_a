@@ -21,8 +21,6 @@ public class PlayScreen implements GameScreenInterface {
     protected Fortress fortress3;
     protected Game game;
 
-
-
     public PlayScreen(Game game){
         this.game = game;
         alienFleet = new AlienFleet(game, new Point(50, 50));
