@@ -21,7 +21,7 @@ public class AlienFleet extends GameObject {
     }
 
     public void draw() {
-        this.game.clear();
+        
         this.drawAlienMatrix();
         this.updateFleetPosition();
         this.dropBombFromAlien();

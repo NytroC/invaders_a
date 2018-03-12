@@ -20,13 +20,13 @@ public class PlayScreen implements GameScreenInterface {
     protected Fortress fortress2;
     protected Fortress fortress3;
     protected Game game;
-    protected String score;
+    protected String scoreText;
 
 
 
     public PlayScreen(Game game){
         this.game = game;
-        score = "Score: ";
+        scoreText = "Score: ";
         alienFleet = new AlienFleet(game, new Point(50, 50));
         ship = new Ship(game, new Point(50, game.height - 50));
         ufo = new UFO(game, new Point(-300,25));
@@ -49,7 +49,7 @@ public class PlayScreen implements GameScreenInterface {
         game.fill(200, 255, 2);
         game.textSize(32);
 
-        game.text(score + game.score, 20, 25);
+        game.text(scoreText + game.score, 20, 25);
         game.text(game.title, 300, 25);
         /*
         for(int i = 0; i < this.fortress.size(); i++) {

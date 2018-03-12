@@ -18,7 +18,6 @@ public class Ship extends GameObject {
 
     public Ship(Game game, Point point) {
         super(game, point);
-
         this.setup();
     }
 
