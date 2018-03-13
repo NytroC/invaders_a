@@ -20,7 +20,7 @@ public class StartScreen {
         game.textSize(32);
         game.text(highScoreText + game.gameState.getHighScore(), 300, 50);
         game.text("Insert Coin(s)", 300, game.height / 2 + 50);
-        game.text("Credit(s): 3", 325, 600);
+        game.text("Credit(s): " + game.gameState.lives.size(), 325, 550);
         if (game.frameCount % 60 < 20){
             game.fill(0, 0, 0);
         }
