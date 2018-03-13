@@ -34,8 +34,8 @@ public class PlayScreen implements Drawable {
 
         this.collisionDetector.runCollisionChecks();
 
-        for (Ship ship : game.gameState.lives) {
-            ship.draw();
+        for (Life life : game.gameState.lives) {
+            life.draw();
         }
         this.drawScore();
 
