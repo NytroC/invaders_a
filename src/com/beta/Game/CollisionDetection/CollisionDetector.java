@@ -4,6 +4,8 @@ import java.util.HashMap;
 import com.beta.Game.Contracts.Collidable;
 import com.beta.Game.GameObjects.AlienFleet;
 import com.beta.Game.GameObjects.GameObject;
+import com.beta.Game.GameObjects.Rocket;
+import com.beta.Game.GameObjects.Ship;
 import com.beta.Game.GameState.GameState;
 
 /**
@@ -19,13 +21,10 @@ public class CollisionDetector {
     }
 
     public void runCollisionChecks() {
-        this.checkAlienFleetBombCollision();
+        this.checkAlienFleetBombCollisions();
     }
 
-    // if alienFleet bomb isTouching(fortress) with
-    //
-
-    public void checkAlienFleetBombCollision() {
+    public void checkAlienFleetBombCollisions() {
         AlienFleet alienFleet = (AlienFleet) this.gameObjects.get("alienFleet");
 
         if (alienFleet.isDroppingBomb) {
@@ -36,10 +35,27 @@ public class CollisionDetector {
             for (String fortress: fortresses) {
                 if (bomb.isTouching((GameObject) this.gameObjects.get(fortress))) {
                     alienFleet.stopDroppingBomb();
-                    this.gameState.decrementScoreBy(50);
+                }
+            }
+
+            if (bomb.isTouching((GameObject) this.gameObjects.get("ship"))) {
+                alienFleet.stopDroppingBomb();
+                this.gameState.decrementScoreBy(50);
+            }
+
+            Ship ship = (Ship) this.gameObjects.get("ship");
+
+            for (Rocket rocket: ship.rockets) {
+                if (bomb.isTouching(rocket)) {
+                    alienFleet.stopDroppingBomb();
                 }
             }
         }
     }
+
+//    public void checkRocketCollideWithAlienFleetCollision() {
+//        Ship ship = (Ship) this.gameObjects.get("ship");
+//
+//    }
 
 }
