@@ -26,7 +26,7 @@ public class Ship extends GameObject {
     }
 
     public void draw() {
-        this.game.image(sprite, this.point.x, this.game.height - 50, this.radius * 2, this.radius* 2);
+        this.game.image(sprite, this.point.x, this.point.y, this.radius * 2, this.radius* 2);
         drawRocket();
         setReloadTime();
     }

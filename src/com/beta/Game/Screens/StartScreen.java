@@ -17,7 +17,7 @@ public class StartScreen {
     }
 
     public void draw(){
-        game.text(highScoreText + game.highScore, 300, 50);
+        game.text(highScoreText + game.gameState.getHighScore(), 300, 50);
         game.image(startImage, 300, 300);
     }
 

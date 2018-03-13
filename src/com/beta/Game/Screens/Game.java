@@ -25,8 +25,6 @@ public class Game extends PApplet {
         startScreen = new StartScreen(this);
         playScreen = new PlayScreen(this);
         pauseScreen = new PauseScreen(this);
-
-        this.title = "Space Invaders";
         score = 0;
     }
 

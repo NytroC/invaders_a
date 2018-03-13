@@ -16,8 +16,9 @@ public class PlayScreen implements Drawable {
         this.game = game;
 
         this.scoreText = "Score: ";
+        this.game.gameState.setLives(3, this.game);
         this.gameObjects.put("alienFleet", new AlienFleet(game, new Point(50, 50)));
-        this.gameObjects.put("ship", new Ship(game, new Point(50, game.height - 50)));
+        this.gameObjects.put("ship", new Ship(game, new Point(50, game.height - 100)));
         this.gameObjects.put("ufo", new UFO(game, new Point(-300,25)));
         this.gameObjects.put("fortress", new Fortress(game, new Point(100, 450)));
         this.gameObjects.put("fortress1", new Fortress(game, new Point(300, 450)));
@@ -37,7 +38,10 @@ public class PlayScreen implements Drawable {
         game.textSize(16);
 
         game.text(scoreText + this.game.gameState.score(), 25, 25);
-        game.text(game.title, 300, 25);
+        game.text(game.gameState.title, 300, 25);
+        for (Ship ship : game.gameState.lives) {
+            ship.draw();
+        }
 
         controls();
     }
