@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class Ship extends GameObject {
     private PImage sprite;
     private Rocket rocket;
-    ArrayList<Rocket> rockets = new ArrayList<>();
-    private float radius = 25;
+    public ArrayList<Rocket> rockets = new ArrayList<>();
+    private int radius = 25;
     private float speed = 2;
     private int counter = 0;
     private boolean reloading = false;
@@ -23,6 +23,7 @@ public class Ship extends GameObject {
 
     void setup() {
         this.sprite = this.game.loadImage("sprites/ship.png");
+        this.setDimensions(this.radius * 2, this.radius * 2);
     }
 
     public void draw() {

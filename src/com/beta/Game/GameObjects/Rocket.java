@@ -12,16 +12,16 @@ public class Rocket extends  GameObject {
     }
 
     void setup() {
-        //        this.shipImage = this.game.loadImage("ship.png");
+       this.setDimensions(10, 10);
     }
 
     public void draw() {
-//        this.game.image(shipImage, this.point.x, this.point.y);
         this.game.fill(255, 000, 000);
-        this.game.rect(this.point.x, this.point.y, 10, 10);
+        this.game.rect(this.point.x, this.point.y, this.width, this.height);
         this.update();
     }
-    public void update(){
+
+    public void update() {
         this.point.y -= ySpeed;
     }
 

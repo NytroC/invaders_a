@@ -34,16 +34,13 @@ public class PlayScreen implements Drawable {
 
         this.collisionDetector.runCollisionChecks();
 
-        game.fill(200, 255, 2);
-        game.textSize(16);
-
-        game.text(scoreText + this.game.gameState.score(), 25, 25);
-        game.text(game.gameState.title, 300, 25);
         for (Ship ship : game.gameState.lives) {
             ship.draw();
         }
+        this.drawScore();
 
-        controls();
+
+        this.controls();
     }
 
     public void keyPressed(){
@@ -84,6 +81,14 @@ public class PlayScreen implements Drawable {
         if(game.keys[2] == true) {
             ship.moveRight();
         }
+    }
+
+    public void drawScore() {
+        game.fill(200, 255, 2);
+        game.textSize(16);
+
+        game.text(scoreText + this.game.gameState.score(), 25, 25);
+        game.text(game.gameState.title, 300, 25);
     }
 
     public void mouseClicked() {
