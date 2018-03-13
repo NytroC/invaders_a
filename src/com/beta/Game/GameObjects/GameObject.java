@@ -1,12 +1,13 @@
 package com.beta.Game.GameObjects;
 
+import com.beta.Game.Contracts.Drawable;
 import com.beta.Game.Screens.Game;
 import processing.core.PImage;
 
 /**
  * Created by drewjbartlett on 3/6/18.
  */
-abstract public class GameObject {
+abstract public class GameObject implements Drawable {
     protected Point point;
     protected Game game;
     protected PImage sprite;
@@ -17,8 +18,6 @@ abstract public class GameObject {
     }
 
     abstract void setup();
-
-    abstract public void draw();
 
     public Point getPosition() {
         return this.point;
