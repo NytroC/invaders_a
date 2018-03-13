@@ -17,9 +17,9 @@ public class Fortress extends GameObject implements Collidable {
     }
 
     public void setup() {
-        this.sprite = this.game.loadImage("sprites/fortress.png");
+        //this.sprite = this.game.loadImage("sprites/fortress.png");
 
-        this.setDimensions(96, 72);
+        //this.setDimensions(96, 72);
         //for(int i = 0; i < 4; i++) {
         //    fortress.add(new Fortress(this.width/4 * i + 200, this.height - 200, 100, this));
         //}
@@ -27,7 +27,8 @@ public class Fortress extends GameObject implements Collidable {
 
     public void draw() {
         this.game.fill(0, 255, 0);
-        this.game.image(this.sprite, this.point.x, this.point.y, this.width, this.height);
+        this.game.rect(this.point.x, this.point.y, 40, 40);
+        //this.game.image(this.sprite, this.point.x, this.point.y, this.width, this.height);
     }
 
     private void fortressDecay(int status) {
