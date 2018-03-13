@@ -10,9 +10,6 @@ public class Game extends PApplet {
     protected boolean startGame = false;
     protected boolean pauseGame = false;
     protected GameState gameState;
-    protected int score;
-    protected int highScore;
-    protected String title;
 
     boolean keys[] = {false, false, false};
 
@@ -25,7 +22,7 @@ public class Game extends PApplet {
         startScreen = new StartScreen(this);
         playScreen = new PlayScreen(this);
         pauseScreen = new PauseScreen(this);
-        score = 0;
+
     }
 
     public void draw() {

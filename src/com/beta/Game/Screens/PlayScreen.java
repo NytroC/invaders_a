@@ -11,11 +11,13 @@ public class PlayScreen implements Drawable {
     protected Game game;
     boolean keys[] = { false, false, false };
     protected String scoreText;
+    protected String livesText;
 
     public PlayScreen(Game game) {
         this.game = game;
 
         this.scoreText = "Score: ";
+        livesText = "X ";
         this.game.gameState.setLives(3, this.game);
         this.gameObjects.put("alienFleet", new AlienFleet(game, new Point(50, 50)));
         this.gameObjects.put("ship", new Ship(game, new Point(50, game.height - 100)));
@@ -37,6 +39,8 @@ public class PlayScreen implements Drawable {
         for (Life life : game.gameState.lives) {
             life.draw();
         }
+
+        this.drawLivesText();
         this.drawScore();
 
 
@@ -89,6 +93,11 @@ public class PlayScreen implements Drawable {
 
         game.text(scoreText + this.game.gameState.score(), 25, 25);
         game.text(game.gameState.title, 300, 25);
+    }
+    public void drawLivesText(){
+        game.fill(200, 255, 2);
+        game.textSize(16);
+        game.text(livesText + this.game.gameState.lives.size(), 10 + (this.game.gameState.lives.size() * 60), this.game.height - 25);
     }
 
     public void mouseClicked() {
