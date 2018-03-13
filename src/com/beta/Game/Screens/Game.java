@@ -1,6 +1,7 @@
 package com.beta.Game.Screens;
 
 import com.beta.Game.Contracts.GameScreen.GameScreenInterface;
+import com.beta.Game.GameState.GameState;
 import processing.core.PApplet;
 
 public class Game extends PApplet {
@@ -12,9 +13,10 @@ public class Game extends PApplet {
     protected boolean startGame = false;
     protected boolean pauseGame = false;
 
-    protected String title;
+    protected GameState gamestate;
     protected int score;
     protected int highScore;
+    protected String title;
 
     boolean keys[] = {false, false, false};
 
@@ -26,7 +28,7 @@ public class Game extends PApplet {
         startScreen = new StartScreen(this);
         playScreen = new PlayScreen(this);
         pauseScreen = new PauseScreen(this);
-        title = "Space Invaders";
+        this.title = "Space Invaders";
         score = 0;
 
     }
