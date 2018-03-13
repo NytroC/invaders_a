@@ -12,7 +12,7 @@ public class PlayScreen implements Drawable {
     boolean keys[] = { false, false, false };
     protected String scoreText;
 
-    public PlayScreen(Game game){
+    public PlayScreen(Game game) {
         this.game = game;
 
         this.scoreText = "Score: ";
@@ -23,7 +23,7 @@ public class PlayScreen implements Drawable {
         this.gameObjects.put("fortress1", new Fortress(game, new Point(300, 450)));
         this.gameObjects.put("fortress2", new Fortress(game, new Point(500, 450)));
         this.gameObjects.put("fortress3", new Fortress(game, new Point(700, 450)));
-        this.collisionDetector = new CollisionDetector(this.gameObjects);
+        this.collisionDetector = new CollisionDetector(this.gameObjects, this.game.gameState);
     }
 
     public void draw() {
@@ -31,10 +31,12 @@ public class PlayScreen implements Drawable {
             gameObject.draw();
         }
 
-        game.fill(200, 255, 2);
-        game.textSize(32);
+        this.collisionDetector.runCollisionChecks();
 
-        game.text(scoreText + game.score, 20, 25);
+        game.fill(200, 255, 2);
+        game.textSize(16);
+
+        game.text(scoreText + this.game.gameState.score(), 25, 25);
         game.text(game.title, 300, 25);
 
         controls();
@@ -82,7 +84,8 @@ public class PlayScreen implements Drawable {
 
     public void mouseClicked() {
         System.out.println("Clicked");
-//        this.gameObjects.get("alienFleet").killRandomAlien();
+        AlienFleet alienFleet = (AlienFleet) this.gameObjects.get("alienFleet");
+        alienFleet.killRandomAlien();
         System.out.println("EndClicked");
     }
 

@@ -5,9 +5,20 @@ public class GameState {
     protected int score;
     protected int highScore;
 
-    public GameState(){
+    public GameState() {
         this.title  = "Space Invaders";
         this.score = 0;
+    }
 
+    public void incrementScoreBy(int score) {
+        this.score += score;
+    }
+
+    public void decrementScoreBy(int score) {
+        this.score -= score;
+    }
+
+    public int score() {
+        return this.score;
     }
 }

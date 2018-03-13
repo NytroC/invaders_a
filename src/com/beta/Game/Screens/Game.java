@@ -9,7 +9,7 @@ public class Game extends PApplet {
     protected PauseScreen pauseScreen;
     protected boolean startGame = false;
     protected boolean pauseGame = false;
-    protected GameState gamestate;
+    protected GameState gameState;
     protected int score;
     protected int highScore;
     protected String title;
@@ -21,12 +21,13 @@ public class Game extends PApplet {
     }
 
     public void setup() {
+        this.gameState = new GameState();
         startScreen = new StartScreen(this);
         playScreen = new PlayScreen(this);
         pauseScreen = new PauseScreen(this);
+
         this.title = "Space Invaders";
         score = 0;
-
     }
 
     public void draw() {

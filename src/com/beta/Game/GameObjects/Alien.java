@@ -29,24 +29,6 @@ public class Alien extends GameObject {
         }
     }
 
-    /**
-     * Get the right edge coordinate of the alien
-     *
-     * @return float
-     */
-    public float rightEdge() {
-        return this.point.x + this.width;
-    }
-
-    /**
-     * Get the left edge coordinate of the alien
-     *
-     * @return float
-     */
-    public float leftEdge() {
-        return this.point.x;
-    }
-
     public void kill() {
         this.isAlive = false;
         System.out.println("Killing " + this.gridCoordinates.x + ", " + this.gridCoordinates.y);

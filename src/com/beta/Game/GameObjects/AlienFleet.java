@@ -8,8 +8,8 @@ public class AlienFleet extends GameObject {
     private String[] rowColors = { "red", "green", "blue", "purple", "orange", "pink" };
     private String xDirection = "LEFT";
     private float xSpeed = 0.5f;
-    private boolean isDroppingBomb = false;
-    private Bomb currentBomb;
+    public boolean isDroppingBomb = false;
+    public Bomb currentBomb;
 
 //    [
 //            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -217,9 +217,6 @@ public class AlienFleet extends GameObject {
 
     public void killRandomAlien() {
         int lastRow = this.getLastRowInColumn(0);
-
-        System.out.println("Last Row: " + lastRow);
-
         this.alienMatrix[0][lastRow].kill();
     }
 
