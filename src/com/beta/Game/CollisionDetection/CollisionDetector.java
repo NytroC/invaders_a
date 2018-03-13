@@ -38,6 +38,7 @@ public class CollisionDetector {
             if (bomb.isTouching((GameObject) this.gameObjects.get("ship"))) {
                 alienFleet.stopDroppingBomb();
                 this.gameState.decrementScoreBy(50);
+                this.gameState.deleteLife();
             }
 
             Ship ship = (Ship) this.gameObjects.get("ship");

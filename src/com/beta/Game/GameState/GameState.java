@@ -27,7 +27,9 @@ public class GameState {
         this.score -= score;
     }
     public void deleteLife(){
-        lives.remove(lives.size() - 1);
+        if(lives.size() > 0) {
+            lives.remove(lives.size() - 1);
+        }
     }
 
     public void setLives(int numberOfLives, Game game){
