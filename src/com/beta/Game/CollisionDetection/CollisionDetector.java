@@ -2,10 +2,7 @@ package com.beta.Game.CollisionDetection;
 
 import java.util.HashMap;
 import com.beta.Game.Contracts.Collidable;
-import com.beta.Game.GameObjects.AlienFleet;
-import com.beta.Game.GameObjects.GameObject;
-import com.beta.Game.GameObjects.Rocket;
-import com.beta.Game.GameObjects.Ship;
+import com.beta.Game.GameObjects.*;
 import com.beta.Game.GameState.GameState;
 
 /**
@@ -53,9 +50,9 @@ public class CollisionDetector {
         }
     }
 
-//    public void checkRocketCollideWithAlienFleetCollision() {
-//        Ship ship = (Ship) this.gameObjects.get("ship");
-//
-//    }
+    public void checkRocketCollideWithAlienFleetCollision() {
+        Ship ship = (Ship) this.gameObjects.get("ship");
+        AlienFleet alienFleet = (AlienFleet) this.gameObjects.get("alienFleet");
+    }
 
 }
