@@ -1,10 +1,13 @@
 package com.beta.Game.GameObjects;
 
 import com.beta.Game.Screens.Game;
+
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class AlienFleet extends GameObject {
     private Alien[][] alienMatrix = new Alien[10][6];
+    private ArrayList<Alien> aliens = new ArrayList<>();
     private String[] rowColors = { "red", "green", "blue", "purple", "orange", "pink" };
     private String xDirection = "LEFT";
     private float xSpeed = 0.5f;
@@ -47,6 +50,7 @@ public class AlienFleet extends GameObject {
                         new GridPoint(column, row),
                         this.game.loadImage("sprites/alien/alien-" + this.rowColors[row] + ".png")
                 );
+                aliens.add(this.alienMatrix[column][row]);
             }
         }
     }
@@ -220,5 +224,7 @@ public class AlienFleet extends GameObject {
         this.alienMatrix[0][lastRow].kill();
     }
 
-
+    public ArrayList<Alien> getAliens() {
+        return aliens;
+    }
 }

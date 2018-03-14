@@ -32,9 +32,4 @@ public class Bomb extends GameObject implements Collidable {
         // this.game.collisionDetection.collisionMade(COLLISIONS.BOMB_HIT_ROCKET, this)
     }
 
-    public boolean isTouching(GameObject gameObject) {
-        return this.leftEdge() >= gameObject.leftEdge() &&
-                this.rightEdge() <= gameObject.rightEdge() &&
-                this.bottomEdge() >= gameObject.topEdge();
-    }
 }

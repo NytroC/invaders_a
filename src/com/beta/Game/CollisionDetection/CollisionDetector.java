@@ -1,5 +1,6 @@
 package com.beta.Game.CollisionDetection;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import com.beta.Game.Contracts.Collidable;
 import com.beta.Game.GameObjects.*;
@@ -19,6 +20,7 @@ public class CollisionDetector {
 
     public void runCollisionChecks() {
         this.checkAlienFleetBombCollisions();
+        this.checkRocketCollideWithAlienFleetCollision();
     }
 
     public void checkAlienFleetBombCollisions() {
@@ -53,7 +55,16 @@ public class CollisionDetector {
 
     public void checkRocketCollideWithAlienFleetCollision() {
         Ship ship = (Ship) this.gameObjects.get("ship");
+        ArrayList<Rocket> rockets = ship.getRockets();
         AlienFleet alienFleet = (AlienFleet) this.gameObjects.get("alienFleet");
+        ArrayList<Alien> aliens = alienFleet.getAliens();
+
+        for(Rocket rocket: rockets){
+            for(Alien alien: aliens)
+            if(rocket.isTouching(alien)){
+                alien.kill();
+            }
+        }
     }
 
 }
