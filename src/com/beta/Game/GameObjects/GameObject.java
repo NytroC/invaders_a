@@ -69,4 +69,5 @@ abstract public class GameObject implements Drawable {
     public float leftEdge() {
         return this.point.x;
     }
+
 }

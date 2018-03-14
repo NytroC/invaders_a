@@ -4,6 +4,7 @@ package com.beta.Game.GameState;
 import com.beta.Game.GameObjects.GameObject;
 import com.beta.Game.GameObjects.Point;
 import com.beta.Game.GameObjects.Life;
+import com.beta.Game.GameObjects.Fortress;
 import com.beta.Game.Screens.Game;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class GameState {
     protected int score;
     protected int highScore;
     public ArrayList<Life> lives = new ArrayList<>();
+    public ArrayList<Fortress> fortress = new ArrayList<>();
 
     public GameState() {
         this.title  = "Space Invaders";
@@ -45,4 +47,5 @@ public class GameState {
     public int score() {
         return this.score;
     }
+
 }
