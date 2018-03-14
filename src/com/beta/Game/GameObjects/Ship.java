@@ -13,7 +13,7 @@ public class Ship extends GameObject {
     private float speed = 2;
     private int counter = 0;
     private boolean reloading = false;
-    private int reloadTime = 180;
+    private int reloadTime = 60;
 
 
     public Ship(Game game, Point point) {
