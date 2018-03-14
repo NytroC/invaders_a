@@ -22,14 +22,9 @@ public class Bomb extends GameObject implements Collidable {
         this.point.y += this.speed;
     }
 
-    private void checkForCollision() {
-        // check against fortress
-        // check against ship
-        // check against active rocket
-        // check against lower boundary
-        // this.game.collisionDetection.collisionMade(this.game.COLLISIONS.BOMB_HIT_FORTESS, this)
-        // this.game.collisionDetection.collisionMade(COLLISIONS.BOMB_HIT_SHIP, this)
-        // this.game.collisionDetection.collisionMade(COLLISIONS.BOMB_HIT_ROCKET, this)
-    }
+    public boolean isTouching(GameObject gameObject) {
+        return this.leftEdge() >= gameObject.leftEdge() && this.rightEdge() <= gameObject.rightEdge() &&
+                this.bottomEdge() >= gameObject.topEdge();
+        }
 
 }

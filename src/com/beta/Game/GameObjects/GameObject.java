@@ -8,7 +8,7 @@ import processing.core.PImage;
 /**
  * Created by drewjbartlett on 3/6/18.
  */
-abstract public class GameObject implements Drawable, Collidable {
+abstract public class GameObject implements Drawable {
     protected Point point;
     protected Game game;
     protected PImage sprite;
