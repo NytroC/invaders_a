@@ -1,5 +1,6 @@
 package com.beta.Game.GameObjects;
 
+import com.beta.Game.Contracts.Collidable;
 import com.beta.Game.Contracts.Drawable;
 import com.beta.Game.Screens.Game;
 import processing.core.PImage;
@@ -7,7 +8,7 @@ import processing.core.PImage;
 /**
  * Created by drewjbartlett on 3/6/18.
  */
-abstract public class GameObject implements Drawable {
+abstract public class GameObject implements Drawable, Collidable {
     protected Point point;
     protected Game game;
     protected PImage sprite;
@@ -68,6 +69,12 @@ abstract public class GameObject implements Drawable {
      */
     public float leftEdge() {
         return this.point.x;
+    }
+
+    public boolean isTouching(GameObject gameObject) {
+        return this.leftEdge() >= gameObject.leftEdge() &&
+                this.rightEdge() <= gameObject.rightEdge() &&
+                this.bottomEdge() >= gameObject.topEdge();
     }
 
 }

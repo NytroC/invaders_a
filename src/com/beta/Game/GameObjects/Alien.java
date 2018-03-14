@@ -1,5 +1,6 @@
 package com.beta.Game.GameObjects;
 
+import com.beta.Game.Contracts.Collidable;
 import com.beta.Game.Screens.Game;
 import processing.core.PImage;
 

@@ -78,4 +78,7 @@ public class Ship extends GameObject {
             reloading = false;
         }
     }
+    public ArrayList<Rocket> getRockets() {
+        return rockets;
+    }
 }
